@@ -5,3 +5,19 @@ version = "0.0.1"
 dependencies = [
     "anywidget"
 ]
+[tool.poetry]
+name = "ipymafs"
+version = "0.0.1"
+description = ""
+authors = ["kolibril13 <44469195+kolibril13@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+anywidget = "^0.6.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
