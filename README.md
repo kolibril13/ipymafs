@@ -18,4 +18,7 @@ m = MafsWidget()
 m
 ``````
 
-<video src="o.mp4" controls></video>
+
+
+https://github.com/kolibril13/ipymafs/assets/44469195/e1255d4e-6ea4-4870-8361-167c0d9689d5
+
