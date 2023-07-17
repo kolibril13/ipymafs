@@ -1,0 +1,7 @@
+[project]
+name = "ipymafs"
+version = "0.0.1"
+
+dependencies = [
+    "anywidget"
+]
