@@ -11,7 +11,7 @@ export default defineConfig(async ({ command }) => {
 	return {
 		plugins: [react()],
 		build: {
-			outDir: "hello_widget/static",
+			outDir: "ipymafs/static",
 			lib: {
 				entry: ["src/widget.jsx"],
 				formats: ["es"],
