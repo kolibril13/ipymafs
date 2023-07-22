@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "npm run build -- --watch",
-    "build": "esbuild --format=esm --bundle --outdir=../src/ipymafs widget.jsx",
+    "build": "esbuild --format=esm --bundle --outdir=src/ipymafs widget.jsx",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
