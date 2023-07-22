@@ -1,8 +1,3 @@
-import { createRoot } from "react-dom/client";
-
-import "mafs/core.css";
-// import "mafs/font.css";
-
 import * as React from "react";
 import {
   Coordinates,
@@ -14,15 +9,17 @@ import {
   useMovablePoint,
   useStopwatch,
   vec,
-} from "mafs";
+} from "mafs"
+import { createRender, useModelState } from "@anywidget/react";
 import { easeInOutCubic } from "js-easing-functions";
 
+import "mafs/core.css";
 
 export const render = createRender(() => {
-    const [content] = useModelState("content");
-    return <App content={content} />;
-  });
-  
+  const [content] = useModelState("content");
+  return <App content={content} />;
+});
+
 
 function xyFromBernsteinPolynomial(
   p1,
@@ -75,7 +72,7 @@ function App({content}) {
     setTimeout(() => start(), 500);
   }, [start]);
   React.useEffect(() => {
-    setT(easeInOutCubic(time, 0, 0.75, duration));
+    setT(easeInOutCubic(time, 0, 1, duration));
   }, [time]);
 
   function drawLineSegments(
