@@ -6,3 +6,9 @@ class Ellipse(anywidget.AnyWidget):
     content = traitlets.Float(0).tag(sync=True)
     _esm =  pathlib.Path(__file__).parent / "ellipse.js"
     _css=  pathlib.Path(__file__).parent / "ellipse.css"
+
+
+class Bezier(anywidget.AnyWidget):
+    content = traitlets.Float(0).tag(sync=True)
+    _esm =  pathlib.Path(__file__).parent / "bezier.js"
+    _css=  pathlib.Path(__file__).parent / "bezier.css"
