@@ -6,29 +6,30 @@ function MyButton({ onClick }) {
   return <button onClick={onClick}> Plus 1 </button>;
 }
 
-function App({ mycoord, setMyCoord }) {
-  console.log(mycoord);
-  const point1 = useMovablePoint([ mycoord, -1]);
+function App({ vector, setVector }) {
+  console.log("hiii");
+  console.log(vector);
+  const point1 = useMovablePoint(vector);
   const point2 = useMovablePoint([2, 1]);
 
   // this effect looks for updates from the python side
   useEffect(() => {
-    if (Math.abs(mycoord - point1.x) > 1e-10) {
-      point1.setPoint([mycoord, point1.y]);
+    if (Math.abs(vector[0] - point1.x) > 1e-10 || Math.abs(vector[1] - point1.y) > 1e-10) {
+      point1.setPoint(vector);
     }
-  }, [mycoord]);
+  }, [vector]);
 
 
   // this effect looks for updates from canvas side
   useEffect(() => {
-    if (Math.abs(mycoord - point1.x) > 1e-10) {
-      setMyCoord(point1.x);
+    if (Math.abs(vector[0] - point1.x) > 1e-10 || Math.abs(vector[1] - point1.y) > 1e-10) {
+      setVector([point1.x, point1.y]);
     }
-  }, [point1.x]);
+  }, [point1.x, point1.y]);
 
 
   const handleButtonClick = () => {
-    point1.setPoint([point1.x + 1, point1.y]);
+    point1.setPoint([point1.x + 1, point1.y + 1]);
   };
 
   return (
@@ -47,6 +48,7 @@ function App({ mycoord, setMyCoord }) {
 import { createRender, useModelState } from "@anywidget/react";
 
 export const render = createRender(() => {
-  const [mycoord, setMyCoord] = useModelState("my_x_coord");
-  return <App mycoord={mycoord} setMyCoord={setMyCoord} />;
+  const [vector, setVector] = useModelState("my_vector");
+  
+  return <App vector={vector} setVector={setVector} />;
 });
