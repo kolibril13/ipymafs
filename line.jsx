@@ -1,4 +1,4 @@
-
+import React, { useState, useEffect } from "react";
 import { Mafs, Line, Coordinates, useMovablePoint } from "mafs";
 import "mafs/core.css";
 
@@ -6,10 +6,24 @@ function MyButton({ onClick }) {
   return <button onClick={onClick}> Plus 1 </button>;
 }
 
-function App({content}) {
-  // console.log(content);
+function App({ content, setContent }) {
+  console.log(content);
   const point1 = useMovablePoint([-1, -1]);
   const point2 = useMovablePoint([2, 1]);
+
+  // this effect looks for updates from the python side
+  useEffect(() => {
+    if (Math.abs(content - point1.x) > 1e-10) {
+      point1.setPoint([content, point1.y]);
+    }
+  }, [content]);
+
+  useEffect(() => {
+    if (Math.abs(content - point1.x) > 1e-10) {
+      setContent(point1.x);
+    }
+  }, [point1.x]);
+
 
   const handleButtonClick = () => {
     point1.setPoint([point1.x + 1, point1.y]);
@@ -28,16 +42,9 @@ function App({content}) {
   );
 }
 
-
-
-
-
-
-import React from "react";
 import { createRender, useModelState } from "@anywidget/react";
 
 export const render = createRender(() => {
-  const [content] = useModelState("content");
-  console.log(content);
-  return <App content={content} />;
+  const [content, setContent] = useModelState("content");
+  return <App content={content} setContent={setContent} />;
 });
