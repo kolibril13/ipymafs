@@ -16,8 +16,8 @@ import "mafs/core.css";
 import { createRender, useModelState } from "@anywidget/react";
 
 export const render = createRender(() => {
-  const [mycoord, setmyCoord] = useModelState("my_x_coord");
-  return <App mycoord={mycoord} setmyCoord={setmyCoord} />;
+  const [mycoord, setMyCoord] = useModelState("my_x_coord");
+  return <App mycoord={mycoord} setMyCoord={setMyCoord} />;
 });
 
 
@@ -46,7 +46,7 @@ function inPairs(arr) {
   return pairs;
 }
 
-function App({mycoord, setmyCoord}) {
+function App({mycoord, setMyCoord}) {
   console.log("hiii");
   console.log(mycoord);
 
@@ -67,7 +67,7 @@ function App({mycoord, setmyCoord}) {
   // this effect looks for updates from canvas side
   useEffect(() => {
     if (Math.abs(mycoord - p1.x) > 1e-10) {
-      setmyCoord(p1.x);
+      setMyCoord(p1.x);
     }
   }, [p1.x]);
 
