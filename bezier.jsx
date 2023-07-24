@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Coordinates,
   Plot,
@@ -10,15 +10,16 @@ import {
   useStopwatch,
   vec,
 } from "mafs"
-import { createRender, useModelState } from "@anywidget/react";
 import { easeInOutCubic } from "js-easing-functions";
 
 import "mafs/core.css";
+import { createRender, useModelState } from "@anywidget/react";
 
 export const render = createRender(() => {
-  const [content] = useModelState("content");
-  return <App content={content} />;
+  const [mycoord, setmyCoord] = useModelState("my_x_coord");
+  return <App mycoord={mycoord} setmyCoord={setmyCoord} />;
 });
+
 
 
 function xyFromBernsteinPolynomial(
@@ -45,11 +46,32 @@ function inPairs(arr) {
   return pairs;
 }
 
-function App({content}) {
+function App({mycoord, setmyCoord}) {
+  console.log("hiii");
+  console.log(mycoord);
+
   const [t, setT] = React.useState(0.5);
   const opacity = 1 - (2 * t - 1) ** 6;
 
-  const p1 = useMovablePoint([-5, 2]);
+  const p1 = useMovablePoint([mycoord, 2]);
+
+
+  // this effect looks for updates from the python side
+  useEffect(() => {
+    if (Math.abs(mycoord - p1.x) > 1e-10) {
+      p1.setPoint([mycoord, p1.y]);
+    }
+  }, [mycoord]);
+
+
+  // this effect looks for updates from canvas side
+  useEffect(() => {
+    if (Math.abs(mycoord - p1.x) > 1e-10) {
+      setmyCoord(p1.x);
+    }
+  }, [p1.x]);
+
+
   const p2 = useMovablePoint([5, -2]);
 
   const c1 = useMovablePoint([-2, -3]);
