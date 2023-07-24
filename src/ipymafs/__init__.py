@@ -14,6 +14,6 @@ class Bezier(anywidget.AnyWidget):
     _css=  pathlib.Path(__file__).parent / "bezier.css"
 
 class Line(anywidget.AnyWidget):
-    content = traitlets.Float(0).tag(sync=True)
+    my_x_coord = traitlets.Float(0).tag(sync=True)
     _esm =  pathlib.Path(__file__).parent / "line.js"
     _css=  pathlib.Path(__file__).parent / "line.css"
