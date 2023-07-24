@@ -8,17 +8,15 @@ import {
   Theme,
   vec,
   Transform,
-} from "mafs"
-import { createRender, useModelState } from "@anywidget/react";
+} from "mafs";
+import { createRender } from "@anywidget/react";
 import "mafs/core.css";
 
 export const render = createRender(() => {
-  const [content] = useModelState("content");
-  return <App content={content} />;
+  return <App />;
 });
 
-
-function App({ content }) {
+function App() {
   const hintRadius = 3;
 
   // This center point translates everything else.
@@ -56,7 +54,7 @@ function App({ content }) {
             radius={hintRadius}
             strokeStyle="dashed"
             strokeOpacity={0.3}
-            fillOpacity={content}
+            fillOpacity={0}
           />
 
           <Ellipse
