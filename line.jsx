@@ -6,7 +6,7 @@ function MyButton({ onClick }) {
   return <button onClick={onClick}> Plus 1 </button>;
 }
 
-function App({ mycoord, setContent }) {
+function App({ mycoord, setMyCoord }) {
   console.log(mycoord);
   const point1 = useMovablePoint([ mycoord, -1]);
   const point2 = useMovablePoint([2, 1]);
@@ -22,7 +22,7 @@ function App({ mycoord, setContent }) {
   // this effect looks for updates from canvas side
   useEffect(() => {
     if (Math.abs(mycoord - point1.x) > 1e-10) {
-      setContent(point1.x);
+      setMyCoord(point1.x);
     }
   }, [point1.x]);
 
@@ -47,6 +47,6 @@ function App({ mycoord, setContent }) {
 import { createRender, useModelState } from "@anywidget/react";
 
 export const render = createRender(() => {
-  const [mycoord, setContent] = useModelState("my_x_coord");
-  return <App mycoord={mycoord} setContent={setContent} />;
+  const [mycoord, setMyCoord] = useModelState("my_x_coord");
+  return <App mycoord={mycoord} setMyCoord={setMyCoord} />;
 });
