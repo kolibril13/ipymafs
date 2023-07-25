@@ -7,7 +7,7 @@ class Ellipse(anywidget.AnyWidget):
     _css=  pathlib.Path(__file__).parent / "ellipse.css"
 
 class Bezier(anywidget.AnyWidget):
-    my_x_coord = traitlets.Float(-5).tag(sync=True)
+    p1x = traitlets.Float(-5).tag(sync=True)
     _esm =  pathlib.Path(__file__).parent / "bezier.js"
     _css=  pathlib.Path(__file__).parent / "bezier.css"
 

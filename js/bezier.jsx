@@ -16,7 +16,7 @@ import "mafs/core.css";
 import { createRender, useModelState } from "@anywidget/react";
 
 export const render = createRender(() => {
-  const [mycoord, setMyCoord] = useModelState("my_x_coord");
+  const [mycoord, setMyCoord] = useModelState("p1x");
   return <App mycoord={mycoord} setMyCoord={setMyCoord} />;
 });
 

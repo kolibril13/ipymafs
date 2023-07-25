@@ -13,12 +13,14 @@ pip install ipymafs
 Example script:
 
 ```python
-from ipymafs import MafsWidget
-m = MafsWidget()
-m
-``````
+from ipymafs import Bezier
+b = Bezier(p1x = -5)
+b
+```
 
-
+```
+b.p1x = 4
+```
 
 https://github.com/kolibril13/ipymafs/assets/44469195/e1255d4e-6ea4-4870-8361-167c0d9689d5
 
