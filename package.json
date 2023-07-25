@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "npm run build -- --sourcemap=inline --watch",
-    "build": "esbuild --minify --format=esm --bundle --outdir=src/ipymafs ellipse.jsx bezier.jsx line.jsx",
+    "build": "esbuild --minify --format=esm --bundle --outdir=src/ipymafs js/ellipse.jsx js/bezier.jsx js/line.jsx",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
