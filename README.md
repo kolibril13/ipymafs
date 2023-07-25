@@ -2,15 +2,16 @@
 
 Still work in progress.
 
-Brings https://mafs.dev/ by @stevenpetryk to jupyter.
+This project is build ontop of anywidget and brings https://mafs.dev/ by @stevenpetryk to jupyter.
 
-build ontop of anywidget.
+
+**Installation**
 
 ```
 pip install ipymafs
 ```
 
-Example script:
+**Example script** 
 
 ```python
 from ipymafs import Bezier
@@ -22,5 +23,5 @@ b
 b.p1x = 4
 ```
 
-https://github.com/kolibril13/ipymafs/assets/44469195/e1255d4e-6ea4-4870-8361-167c0d9689d5
+**Demo** 
 
