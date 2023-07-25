@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ipymafs"
-version = "0.0.9"
+version = "0.1.0"
 readme = "README.md"
 license = "MIT"
 dependencies = [
@@ -22,11 +22,10 @@ dev = [
 features = ["dev"]
 
 [tool.hatch.build]
-artifacts = ["src/ipymafs/ellipse.js", "src/ipymafs/ellipse.css"]
+artifacts = ["src/*"]
 
 [tool.hatch.build.hooks.jupyter-builder]
 build-function = "hatch_jupyter_builder.npm_builder"
-ensured-targets = ["src/ipymafs/ellipse.js", "src/ipymafs/ellipse.css"]
 dependencies = ["hatch-jupyter-builder>=0.5.0"]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
